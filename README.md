@@ -56,6 +56,10 @@
   <img src="https://github-profile-trophy.vercel.app/?username=brydel&theme=onestar&no-bg=true&no-frame=true&margin-w=10" />
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/brydel/brydel/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D contributions" />
+</p>
+
 ---
 
 ## 🔥 Featured Projects
