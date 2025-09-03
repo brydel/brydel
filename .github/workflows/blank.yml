@@ -1,0 +1,28 @@
+name: generate-snake
+
+on:
+  schedule:
+    - cron: "0 */24 * * *"   # 1x par jour
+  workflow_dispatch:          # bouton "Run workflow"
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write         # autoriser le push vers la branche "output"
+    steps:
+      - name: Generate snake SVG
+        uses: Platane/snk@v3
+        with:
+          github_user_name: brydel
+          outputs: dist/snake.svg
+
+      - name: Publish to output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
