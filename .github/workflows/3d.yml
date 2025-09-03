@@ -1,0 +1,27 @@
+name: 3D Contributions
+
+on:
+  schedule:
+    - cron: "0 3 * * *"      # tous les jours à 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate 3D profile
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        with:
+          user_name: brydel
+          output_folder: profile-3d-contrib
+          theme: dark
+      - name: Commit files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile-3d-contrib/*
+          git commit -m "chore: update 3D contributions" || echo "No changes"
+          git push
