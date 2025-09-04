@@ -1,12 +1,13 @@
 <!-- HERO -->
 <p align="center">
   <img
-    src="https://capsule-render.vercel.app/api?type=waving&color=0:00c6ff,100:0072ff&height=220&text=Brydel%20Saounde&fontAlign=50&fontAlignY=35&desc=Embedded%20Systems%20%26%20Full-Stack%20Developer&descAlign=50&descAlignY=60&fontColor=ffffff&animation=fadeIn&t=5"
+    src="https://capsule-render.vercel.app/api?type=waving&color=0:00c6ff,100:0072ff&height=220&text=Brydel%20Saounde&fontAlign=50&fontAlignY=35&desc=Embedded%20Systems%20and%20Full-Stack%20Developer&descAlign=50&descAlignY=60&fontColor=ffffff&animation=fadeIn&t=7"
     alt="header"
   />
   <br/>
   <span>🇨🇦</span>
 </p>
+
 
 
 
