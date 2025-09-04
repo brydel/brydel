@@ -2,8 +2,8 @@ name: 3D Contributions
 
 on:
   schedule:
-    - cron: "0 3 * * *"   # Tous les jours à 03h UTC
-  workflow_dispatch:       # Permet de lancer à la main
+    - cron: "0 3 * * *"   # tous les jours à 03:00 UTC
+  workflow_dispatch:
 
 jobs:
   build:
@@ -13,17 +13,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Génère les SVG 3D (utilise des variables d'environnement, pas 'with:')
       - name: Generate 3D profile
-        uses: yoshi389111/github-profile-3d-contrib@0.7.1
-        with:
-          user_name: brydel
-          output_folder: profile-3d-contrib
-          theme: night-rainbow
+        uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          # optionnels :
+          # MAX_REPOS: "100"
+          # SETTING_JSON: ".github/3d-settings.json"
 
-      - name: Commit files
+      - name: Commit & Push
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile-3d-contrib/*
-          git commit -m "update 3D profile" || echo "no changes"
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A .
+          if git commit -m "chore: update 3D contributions"; then
+            git push
+          fi
